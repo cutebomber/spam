@@ -93,7 +93,7 @@ def get_wallet(mnemonic_phrase: str):
         raise ValueError(f"Expected 12 or 24 mnemonic words, got {len(mnemonics)}")
     
     pub_key, priv_key = mnemonic_to_wallet_key(mnemonics)
-    wallet = Wallets.create(WalletVersionEnum.v4r2, pub_key=pub_key, private_key=priv_key, wc=0)
+    _mnemonics, pub_key, priv_key, wallet = Wallets.create(WalletVersionEnum.v4r2, pub_key=pub_key, private_key=priv_key, workchain=0)
     return wallet, pub_key, priv_key, mnemonics
 
 
