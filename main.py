@@ -23,11 +23,11 @@ import requests
 
 MNEMONIC = "key soldier fossil such naive grab else property ethics retire enact advice scissors hen inflict brand quick monkey toss plunge canal garage dress gasp"
 
-AD_TEXT = "🔥 @ikycbot — Fragment verified accounts
+AD_TEXT = """🔥 @ikycbot — Fragment verified accounts
 ⚡ Fully automated
 💸 $5 per account
 🚀 Instant delivery
-Grab yours now!"
+Grab yours now!"""
 
 AMOUNT_TON = 0.001          # TON per address
 DELAY_SECONDS = 2           # Pause between sends (avoid rate limits)
