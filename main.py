@@ -16,6 +16,7 @@ from tonsdk.contract.wallet import WalletVersionEnum, Wallets
 from tonsdk.utils import to_nano, bytes_to_b64str
 from tonsdk.crypto import mnemonic_to_wallet_key
 import requests
+from tonsdk.contract.wallet import WalletV4ContractR2
 
 # ─────────────────────────────────────────────
 #  CONFIG — edit these before running
@@ -86,14 +87,15 @@ TON_API_KEY = "640b4486094ffd81a5e49a4bb7c599fb55e8bfa3d391f140fb02b12b10c032ca"
 #  CORE FUNCTIONS
 # ─────────────────────────────────────────────
 
+from tonsdk.contract.wallet import WalletV4ContractR2
+
 def get_wallet(mnemonic_phrase: str):
-    """Derive wallet keys and contract from mnemonic."""
     mnemonics = mnemonic_phrase.strip().split()
     if len(mnemonics) not in (12, 24):
         raise ValueError(f"Expected 12 or 24 mnemonic words, got {len(mnemonics)}")
     
     pub_key, priv_key = mnemonic_to_wallet_key(mnemonics)
-    _mnemonics, pub_key, priv_key, wallet = Wallets.create(WalletVersionEnum.v4r2, pub_key=pub_key, private_key=priv_key, workchain=0)
+    wallet = WalletV4ContractR2(public_key=pub_key, private_key=priv_key, wc=0)
     return wallet, pub_key, priv_key, mnemonics
 
 
